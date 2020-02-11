@@ -1,13 +1,10 @@
 function arrayDiff(a, b) {
-  if (b.length !== 0) {
-    let filtered = a;
+  if (b.length) {
     for (let i = 0; i < b.length; i++) {
-      filtered = filtered.filter(item => item !== b[i])
+      a = a.filter(item => item !== b[i])
     }
-    return filtered
-  } else {
-    return a
   }
+  return a
 }
 
 console.log(arrayDiff([], [4, 5])) // []
