@@ -1,16 +1,10 @@
 function narcissistic(value) {
-  if (value > 0) {
+  let _value = value.toString().split('').map(Number)
+  if (_value) {
     let output = []
-    let number = value.toString().split('').map(Number)
-    if (number.length > 1) {
-      number.forEach(el => output.push(Math.pow(el, number.length)))
-      return (output.reduce((a, b) => a + b, 0) === value)
-    } else {
-      return true
-    }
-  } else {
-    return false
-  }
+    _value.forEach(el => output.push(Math.pow(el, _value.length)))
+    return (output.reduce((a, b) => a + b, 0) === value)
+  } else return false
 }
 
 
