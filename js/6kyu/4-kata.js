@@ -1,9 +1,9 @@
 function iqTest(numbers) {
   let counts = {odd: [], even: []}
   numbers.match(/\d+/g).map(Number).forEach(function (el, idx) {
-    (el % 2 === 0) ? counts.odd.push(`${idx + 1}`) : counts.even.push(`${idx + 1}`)
+    (el % 2 === 0) ? counts.odd.push(`${idx}`) : counts.even.push(`${idx}`)
   })
-  return parseInt((counts.odd.length === 1) ? counts.odd : counts.even, 10)
+  return parseInt((counts.odd.length === 1) ? counts.odd : counts.even, 10) + 1
 }
 
 
