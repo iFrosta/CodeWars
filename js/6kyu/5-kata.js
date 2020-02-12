@@ -1,12 +1,16 @@
-const order = (words) => {
-  if (words) {
-    let output = []
-    words.match(/(\w+)/g).map((el) => output.push([el, parseInt(el.match(/\d+/g), 10)]))
-    return output.sort((a, b) => a[1] - b[1]).join(' ').replace(/,\d/g, '')
-  } else {
-    return words
-  }
-}
+// const order = (words) => {
+//   if (words) {
+//     let output = []
+//     words.match(/(\w+)/g).map((el) => output.push([el, parseInt(el.match(/\d+/g), 10)]))
+//     return output.sort((a, b) => a[1] - b[1]).join(' ').replace(/,\d/g, '')
+//   } else {
+//     return words
+//   }
+// }
+
+const order = words => words.split(' ').sort(function (a, b) {
+  return a.match(/\d/) - b.match(/\d/);
+}).join(' ');
 
 
 console.log(order("is2 Thi1s T4est 3a")) // "Thi1s is2 3a T4est"
