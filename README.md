@@ -1,4 +1,4 @@
-# CODEWARS
+# CODEWARS ![badge](https://www.codewars.com/users/ifrosta/badges/large)
 [Profile](https://www.codewars.com/users/ifrosta)
 
 ## Completed
