@@ -1,108 +1,45 @@
-function bouncingBall(h, b, w, c = 0) {
-  if (h === w && c === 0 || h <= 0 || c > 600 || b >= 1) {
-    return -1
-  } else {
-    if (h > w && c === 0) c = 1
-    if (h <= w) return c
-    if (h * b > w) c += 2
+// function bouncingBall(h, b, w, c = 0) {
+//   if (h === w && c === 0 || h <= 0 || c > 600 || b >= 1) {
+//     return -1
+//   } else {
+//     if (h > w && c === 0) c = 1
+//     if (h <= w) return c
+//     if (h * b > w) c += 2
+//
+//     return bouncingBall(h * b, b, w, c)
+//   }
+// }
 
-    return bouncingBall(h * b, b, w, c)
-  }
-}
+const bouncingBall = (h, b, w) => (b >= 1 || h < w || b <= 0) ? -1 : Math.ceil(Math.log(w / h) / Math.log(b)) * 2 - 1
 
 // const bouncingBall = (h, b, w) => (b > 0 && b < 1 && w < h && h > 0) ? (1 + 2 * Math.floor(Math.log(w / h) / Math.log(b))) : -1
 
+//A child is playing with a ball on the nth floor of a tall building. The height of this floor, h, is known.
+// He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
+// His mother looks out of a window 1.5 meters from the ground.
+// How many times will the mother see the ball pass in front of her window (including when it's falling and bouncing?
+// Three conditions must be met for a valid experiment:
+// Float parameter "h" in meters must be greater than 0
+// Float parameter "bounce" must be greater than 0 and less than 1
+// Float parameter "window" must be less than h.
+// If all three conditions above are fulfilled, return a positive integer, otherwise return -1.
+// Note:
+// The ball can only be seen if the height of the rebounding ball is strictly greater than the window parameter.
+// Example:
+// - h = 3, bounce = 0.66, window = 1.5, result is 3
+// - h = 3, bounce = 1, window = 1.5, result is -1
+// (Condition 2) not fulfilled).
 
-// genTest()
 
 console.log(bouncingBall(3.0, 0.66, 1.5)) // 3
 console.log(bouncingBall(30.0, 0.66, 1.5))// 15
 console.log(bouncingBall(3.0, 1, 1.5))// -1
 console.log(bouncingBall(2.0, 0.60, 1.5)) // 1
 
+
+// genTest()
 const genTest = () => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 86; i++) {
     console.log(`console.log(bouncingBall(${Math.random() * (100 - 1) + 1}, ${(Math.random() * (10 - 1) + 1) * 0.1}, ${Math.random() * (30 - 1) + 1}))`)
   }
 }
-
-console.log(bouncingBall(55.65320821534305, 0.66, 26.88675322790505))
-console.log(bouncingBall(5.154044681402436, 0.66, 7.504935311482564))
-console.log(bouncingBall(43.17994053931212, 0.66, 21.963001358352617))
-console.log(bouncingBall(9.10187764246807, 0.66, 21.686733734908547))
-console.log(bouncingBall(79.6823530962338, 0.66, 12.218221724406254))
-console.log(bouncingBall(15.21358459087713, 0.66, 20.6992419389867))
-console.log(bouncingBall(31.682060926290852, 0.66, 7.870769400377675))
-console.log(bouncingBall(12.684828693070132, 0.66, 3.7440219694453845))
-console.log(bouncingBall(30.55052992988526, 0.66, 15.204441865440739))
-console.log(bouncingBall(38.48509784557929, 0.66, 20.79775730514357))
-console.log(bouncingBall(13.703865934245652, 0.66, 28.046259280781047))
-console.log(bouncingBall(59.52258402531421, 0.66, 3.0565428972951176))
-console.log(bouncingBall(58.05975781603757, 0.66, 6.008659799963979))
-console.log(bouncingBall(24.496970277061955, 0.66, 7.123459150245785))
-console.log(bouncingBall(15.68579068851756, 0.66, 27.975664586450097))
-console.log(bouncingBall(99.80915680458105, 0.66, 18.312956997258965))
-console.log(bouncingBall(68.04419793250433, 0.66, 25.725800176307054))
-console.log(bouncingBall(53.97820281537148, 0.66, 7.435377604945688))
-console.log(bouncingBall(32.23320245640019, 0.66, 8.485534163572211))
-console.log(bouncingBall(1.9374703729858946, 0.66, 29.60242918721443))
-console.log(bouncingBall(81.4733628333797, 0.66, 6.343246454316684))
-console.log(bouncingBall(15.421156821915424, 0.66, 25.706063343964626))
-console.log(bouncingBall(72.64352263149172, 0.66, 5.53380579211809))
-console.log(bouncingBall(36.95201296140576, 0.66, 6.402940909685004))
-console.log(bouncingBall(50.71719828572225, 0.66, 7.814559896425092))
-console.log(bouncingBall(52.45917073746723, 0.66, 24.29517676906638))
-console.log(bouncingBall(98.97740117869273, 0.66, 10.398646009962569))
-console.log(bouncingBall(24.037553707234594, 0.66, 22.320392866691094))
-console.log(bouncingBall(47.40578901129823, 0.66, 13.28151786195977))
-console.log(bouncingBall(81.41928793664212, 0.66, 7.848173155260551))
-console.log(bouncingBall(94.74690124292286, 0.66, 3.4209333468020153))
-console.log(bouncingBall(35.05773006915439, 0.66, 11.521120787054045))
-console.log(bouncingBall(75.99829712269327, 0.66, 2.5147895035843844))
-console.log(bouncingBall(73.99947136496979, 0.66, 19.39459982669016))
-console.log(bouncingBall(80.99905212160577, 0.66, 10.36510157987919))
-console.log(bouncingBall(67.77070962174484, 0.66, 8.464292495133975))
-console.log(bouncingBall(55.21309204833606, 0.66, 2.916208153962115))
-console.log(bouncingBall(83.19127428057695, 0.66, 9.882634000517756))
-console.log(bouncingBall(70.36488069822248, 0.66, 6.103276799773575))
-console.log(bouncingBall(60.74133188835515, 0.66, 20.136846611471277))
-console.log(bouncingBall(5.762671520621932, 0.66, 15.021018092090017))
-console.log(bouncingBall(45.08061521996044, 0.66, 1.4610453371586618))
-console.log(bouncingBall(51.4455651945712, 0.66, 2.7482487590303903))
-console.log(bouncingBall(19.62737097391212, 0.66, 14.94006284906835))
-console.log(bouncingBall(49.472686416820494, 0.66, 21.78683520169477))
-console.log(bouncingBall(46.560134555384145, 0.66, 21.79355839270807))
-console.log(bouncingBall(77.83732663538181, 0.66, 8.948605327559644))
-console.log(bouncingBall(68.64131056826393, 0.66, 1.4649168050895378))
-console.log(bouncingBall(86.60820475592605, 0.66, 23.95344069594891))
-console.log(bouncingBall(80.6407405591262, 0.66, 16.282474836489364))
-console.log(bouncingBall(87.6227999427834, 0.66, 29.361097752801303))
-console.log(bouncingBall(20.61536788156463, 0.66, 17.839362079038764))
-console.log(bouncingBall(25.931556475116107, 0.66, 5.3601456268433925))
-console.log(bouncingBall(81.60289770844146, 0.66, 4.4973681417927684))
-console.log(bouncingBall(26.100411420250254, 0.66, 20.029701148731217))
-console.log(bouncingBall(75.02820255884856, 0.66, 5.419106984391441))
-console.log(bouncingBall(66.5077013929064, 0.66, 1.2506567114521852))
-console.log(bouncingBall(86.66546666101908, 0.66, 9.77100534891988))
-console.log(bouncingBall(1.033570775294099, 0.66, 12.614578364206965))
-console.log(bouncingBall(14.02272886634966, 0.66, 23.692931443799864))
-console.log(bouncingBall(33.35540944092938, 0.11420982511287879, 9.471348444371333))
-console.log(bouncingBall(79.94664199630164, 0.21352006028740697, 25.232079805892425))
-console.log(bouncingBall(32.092051161136666, 0.7172496972163711, 24.457910482867355))
-console.log(bouncingBall(37.665396701725186, 0.27001928899013494, 1.1742861969287341))
-console.log(bouncingBall(22.047517655603666, 0.18849843316947454, 14.339317828668046))
-console.log(bouncingBall(8.810124009086673, 0.9309710500357401, 11.69890258521837))
-console.log(bouncingBall(77.1147834081074, 0.3309151137020258, 7.778167915142144))
-console.log(bouncingBall(91.52471969780152, 0.819522750784559, 6.655395942048173))
-console.log(bouncingBall(7.359827844019308, 0.900303552488197, 11.554794767107634))
-console.log(bouncingBall(2.664523151887834, 0.21956402466207808, 18.182114380726087))
-console.log(bouncingBall(43.39381690085119, 0.28601482239204223, 24.653744292420843))
-console.log(bouncingBall(30.23629021214343, 0.7072863693929793, 9.409451557227772))
-console.log(bouncingBall(25.278873520148093, 0.2176322818528431, 19.265114138190846))
-console.log(bouncingBall(77.02779061953939, 0.6746827839607984, 13.91691142108831))
-console.log(bouncingBall(17.04106222679264, 0.24765425951304731, 15.694116191404689))
-console.log(bouncingBall(56.974130991193185, 0.7622786771855821, 23.396724038269134))
-console.log(bouncingBall(23.204619889099963, 0.24709704505941046, 3.6081619114199532))
-console.log(bouncingBall(80.82513166620971, 0.7870973100413026, 28.736282025936056))
-console.log(bouncingBall(63.521257282792554, 0.5982631161384971, 10.835637200645445))
-console.log(bouncingBall(25.095239355383217, 0.3793085265629761, 28.8926610106722))
